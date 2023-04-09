@@ -1,14 +1,17 @@
+use bevy::ecs::prelude::Resource;
 use bevy::input::mouse::{MouseButtonInput, MouseWheel};
-use bevy::input::ElementState;
+use bevy::input::ButtonState;
 use bevy::prelude::*;
 
-#[derive(Default, Component)]
+#[derive(Default, Component, Debug)]
 pub struct CameraController {
     cursor_position: Vec2,
     last_cursor_position: Vec2,
     drag_start_position: Option<Vec2>,
     zoom: Option<f32>,
 }
+
+impl Resource for CameraController {}
 
 pub fn camera_controller_system(
     mut mouse_button_input_events: EventReader<MouseButtonInput>,
@@ -25,13 +28,13 @@ pub fn camera_controller_system(
         match event {
             MouseButtonInput {
                 button: MouseButton::Middle,
-                state: ElementState::Pressed,
+                state: ButtonState::Pressed,
             } => {
                 state.drag_start_position = Some(state.cursor_position);
             }
             MouseButtonInput {
                 button: MouseButton::Middle,
-                state: ElementState::Released,
+                state: ButtonState::Released,
             } => {
                 state.drag_start_position = None;
             }

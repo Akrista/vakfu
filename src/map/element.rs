@@ -2,7 +2,8 @@ use std::collections::HashMap;
 use std::io::{Read, Seek};
 
 use anyhow::{anyhow, Result};
-use bevy::sprite::Rect;
+use bevy_sprite::Sprite;
+use bevy_ui::UiRect;
 use byte::{BytesExt, TryRead};
 use glam::Vec2;
 use modular_bitfield::prelude::*;
@@ -45,8 +46,8 @@ impl MapElement {
     }
 
     #[inline]
-    pub fn rect(&self) -> Rect {
-        Rect {
+    pub fn rect(&self) -> UiRect {
+        UiRect {
             min: Vec2::ZERO,
             max: self.size(),
         }

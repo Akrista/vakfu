@@ -51,10 +51,6 @@ impl AssetIo for JarAssetIo {
         unimplemented!()
     }
 
-    fn is_directory(&self, _path: &Path) -> bool {
-        unimplemented!()
-    }
-
     fn watch_path_for_changes(&self, _path: &Path) -> Result<(), AssetIoError> {
         // file watching not implemented
         Ok(())

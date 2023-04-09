@@ -11,6 +11,8 @@ pub struct Settings {
     pub updated: bool,
 }
 
+impl Resource for Settings {}
+
 pub fn settings_system(
     mut settings: ResMut<Settings>,
     mut query: Query<(&SpriteProperties, &mut VisibilityFlags)>,

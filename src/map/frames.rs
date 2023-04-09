@@ -1,4 +1,4 @@
-use bevy::sprite::Rect;
+use bevy_ui::UiRect;
 use byte::ctx::Endian;
 use byte::{BytesExt, TryRead};
 use glam::Vec2;
@@ -8,11 +8,11 @@ use itertools::Itertools;
 pub struct Frames {
     pub total_time: u32,
     pub frame_times: Vec<u16>,
-    pub frame_rects: Vec<Rect>,
+    pub frame_rects: Vec<UiRect>,
 }
 
 impl Frames {
-    pub fn new(total_time: u32, frame_durations: &[u16], frame_coords: Vec<Rect>) -> Self {
+    pub fn new(total_time: u32, frame_durations: &[u16], frame_coords: Vec<UiRect>) -> Self {
         let mut frame_times = Vec::with_capacity(frame_durations.len());
         let mut frame_time = 0;
         for dur in frame_durations {
@@ -45,7 +45,7 @@ impl<'a> TryRead<'a, u8> for Frames {
             .read_iter::<i16>(offset, Endian::default())
             .take(count as usize * 2)
             .tuples()
-            .map(|(x, y)| Rect {
+            .map(|(x, y)| UiRect {
                 min: Vec2::new(x as f32, y as f32),
                 max: Vec2::new(x as f32 + width as f32, y as f32 + height as f32),
             })

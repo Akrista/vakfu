@@ -1,9 +1,9 @@
-use bevy::prelude::*;
-use bevy::sprite::Rect;
-
 use crate::map::chunk::MapChunk;
 use crate::map::frames::Frames;
 use crate::map::iso_to_screen;
+use bevy::prelude::*;
+use bevy_sprite::TextureAtlas;
+use bevy_sprite::TextureAtlasSprite;
 
 #[derive(Default, Component)]
 pub struct MapChunkView {
@@ -29,7 +29,7 @@ impl MapChunkView {
 }
 
 pub fn map_chunk_view_system(
-    windows: Res<Windows>,
+    windows: Res<Window>,
     cameras: Query<&mut Transform, With<Camera>>,
     mut sprites: Query<&mut VisibilityFlags>,
     mut chunks: Query<&mut MapChunkView>,

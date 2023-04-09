@@ -44,14 +44,9 @@ fn main() -> Result<()> {
             let map_ids = get_map_ids(&base_map_gfx_path)?;
             let map_index = map_ids.iter().position(|id| id == &map_arg);
 
-            App::new()
-                .insert_resource(WindowDescriptor {
-                    title: format!("vakfu (Map id : {})", map_arg),
-                    ..default()
-                })
-                .add_plugins_with(DefaultPlugins, |group| {
-                    group.add_before::<bevy::asset::AssetPlugin, _>(JarAssetIo::plugin(gfx_path))
-                })
+            App::build()
+                .add_plugins(DefaultPlugins)
+                .add_plugin(JarAssetIo::plugin(gfx_path))
                 .add_plugin(EguiPlugin)
                 .add_plugin(LogDiagnosticsPlugin::default())
                 .add_plugin(FrameTimeDiagnosticsPlugin::default())

@@ -1,3 +1,4 @@
+use bevy::prelude::*;
 use std::{env, path::PathBuf, process::Command};
 
 #[derive(Debug)]
@@ -6,6 +7,8 @@ pub struct NavigationInfo {
     pub current_index: usize,
     pub game_path: PathBuf,
 }
+
+impl Resource for NavigationInfo {}
 
 pub fn start_other_vakfu(value: &i32, game_path: &PathBuf) {
     let args: Vec<_> = env::args().collect();
