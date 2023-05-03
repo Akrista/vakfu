@@ -1,12 +1,12 @@
 use bevy::{app::AppExit, prelude::*};
-use bevy_egui::{egui, EguiContext};
+use bevy_egui::{egui, EguiContexts};
 
 use crate::systems::settings::Settings;
 
 use super::navigation::{start_other_vakfu, NavigationInfo};
 
 pub fn ui_system(
-    mut egui_context: ResMut<EguiContext>,
+    mut egui_context: EguiContexts,
     mut settings: ResMut<Settings>,
     navigation: Res<NavigationInfo>,
     mut exit: EventWriter<AppExit>,

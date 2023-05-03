@@ -18,8 +18,8 @@ use crate::systems::render::{
 pub fn setup_system(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
-    library: Res<ElementLibrary>,
-    map: Res<Map>,
+    library: ElementLibrary,
+    map: Map,
     mut atlases: ResMut<Assets<TextureAtlas>>,
 ) {
     let z_orders = compute_z_orders(&map);

@@ -45,7 +45,7 @@ impl<'a> TryRead<'a, u8> for Frames {
             .read_iter::<i16>(offset, Endian::default())
             .take(count as usize * 2)
             .tuples()
-            .map(|(x, y)| UiRect {
+            .map(|(x, y)| Rect {
                 min: Vec2::new(x as f32, y as f32),
                 max: Vec2::new(x as f32 + width as f32, y as f32 + height as f32),
             })
