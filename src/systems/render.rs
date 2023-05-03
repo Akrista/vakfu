@@ -29,7 +29,7 @@ impl MapChunkView {
 }
 
 pub fn map_chunk_view_system(
-    windows: Res<Window>,
+    windows: Res<Windows>,
     cameras: Query<&mut Transform, With<Camera>>,
     mut sprites: Query<&mut VisibilityFlags>,
     mut chunks: Query<&mut MapChunkView>,
