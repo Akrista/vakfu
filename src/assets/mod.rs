@@ -28,7 +28,6 @@ where
             .world
             .get_resource::<bevy::tasks::IoTaskPool>()
             .expect("`IoTaskPool` resource not found.")
-            .0
             .clone();
 
         let base = bevy::asset::create_platform_default_asset_io(app);
@@ -37,7 +36,7 @@ where
             props: self.0.clone(),
         };
         let source = IO::try_from(props).expect("could not initialize asset IO");
-        app.insert_resource(AssetServer::new(source, task_pool));
+        app.insert_resource(AssetServer::new(source));
     }
 }
 

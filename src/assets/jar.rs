@@ -51,9 +51,9 @@ impl AssetIo for JarAssetIo {
         unimplemented!()
     }
 
-    fn is_directory(&self, _path: &Path) -> bool {
-        unimplemented!()
-    }
+    // fn is_directory(&self, _path: &Path) -> bool {
+    //     unimplemented!()
+    // }
 
     fn watch_path_for_changes(&self, _path: &Path) -> Result<(), AssetIoError> {
         // file watching not implemented
@@ -62,5 +62,12 @@ impl AssetIo for JarAssetIo {
 
     fn watch_for_changes(&self) -> Result<(), AssetIoError> {
         unimplemented!()
+    }
+
+    fn get_metadata(
+        &self,
+        _: &std::path::Path,
+    ) -> Result<bevy::asset::Metadata, bevy::asset::AssetIoError> {
+        todo!()
     }
 }
