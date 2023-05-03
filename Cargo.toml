@@ -8,6 +8,7 @@ anyhow = "1.0.70"
 pico-args = "0.5.0"
 byte = "0.2.6"
 modular-bitfield = "0.11.2"
+glam = "0.23.0"
 itertools = "0.10.5"
 bevy_sprite = "0.10.1"
 bevy_ui = "0.10.1"
@@ -20,9 +21,9 @@ default-features = false
 features = [ "deflate" ]
 
 [dependencies.bevy]
-version = "0.8"
+version = "0.10.1"
 default-features = false
-features = [ "bevy_winit", "render", "x11", "bevy_asset", "bevy_scene", ]
+features = [ "bevy_winit", "bevy_render", "x11", "bevy_asset", "bevy_scene" ]
 
 [dependencies.bevy_egui]
 version = "0.20.2"
