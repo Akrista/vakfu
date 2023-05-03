@@ -2,9 +2,7 @@ use std::collections::HashMap;
 use std::io::{Read, Seek};
 
 use anyhow::{anyhow, Result};
-use bevy::prelude::Rect;
-use bevy_sprite::Sprite;
-use bevy_ui::UiRect;
+use bevy::sprite::Rect;
 use byte::{BytesExt, TryRead};
 use glam::Vec2;
 use modular_bitfield::prelude::*;

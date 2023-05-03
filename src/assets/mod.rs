@@ -31,12 +31,7 @@ where
             .0
             .clone();
 
-        let asset_plugin = AssetPlugin {
-            asset_folder: "assets".to_string(),
-            watch_for_changes: false,
-        };
-        let base = asset_plugin.create_platform_default_asset_io();
-
+        let base = bevy::asset::create_platform_default_asset_io(app);
         let props = AssetIoProps {
             base,
             props: self.0.clone(),

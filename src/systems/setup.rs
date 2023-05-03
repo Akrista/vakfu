@@ -1,10 +1,8 @@
 use std::collections::HashMap;
 
 use bevy::prelude::*;
-use bevy_sprite::Anchor;
-use bevy_sprite::TextureAtlas;
-use bevy_sprite::TextureAtlasSprite;
-use glam::f32::Vec2;
+use bevy::sprite::{Anchor, Rect};
+use glam::const_vec2;
 use itertools::Itertools;
 
 use super::render::MapChunkView;
@@ -12,20 +10,20 @@ use crate::map::element::{ElementLibrary, MapElement};
 use crate::map::sprite::MapSprite;
 use crate::map::Map;
 use crate::systems::render::{
-    AnimatedSpriteBundle, Animation, SpriteProperties, StaticSpriteBundle,
+    AnimatedSpriteBundle, Animation, SpriteProperties, StaticSpriteBundle
 };
 
 pub fn setup_system(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
-    library: ElementLibrary,
-    map: Map,
+    library: Res<ElementLibrary>,
+    map: Res<Map>,
     mut atlases: ResMut<Assets<TextureAtlas>>,
 ) {
     let z_orders = compute_z_orders(&map);
     let mut atlas_cache = HashMap::new();
 
-    commands.spawn_bundle(Camera2dBundle::default());
+    commands.spawn_bundle(OrthographicCameraBundle::new_2d());
 
     for chunk in map.chunks() {
         let mut elements = vec![];
@@ -61,11 +59,11 @@ fn spawn_sprite(
     texture_atlas: Handle<TextureAtlas>,
     z_order: f32,
 ) -> Entity {
-    const FLIP_Y: Vec2 = Vec2::new(1.0, -1.0);
+    const FLIP_Y: Vec2 = const_vec2!([1., -1.]);
     // size and origin need to be flipped in the Y dimension for rendering
     let pos = sprite.screen_position() - element.origin() * FLIP_Y;
     let transform = Transform::from_translation(pos.extend(z_order));
-    let visibility = Visibility::Hidden;
+    let visibility = Visibility { is_visible: false };
     let properties = SpriteProperties {
         layer: sprite.layer,
         group_key: sprite.group_key,

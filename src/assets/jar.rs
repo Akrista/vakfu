@@ -1,4 +1,3 @@
-use bevy::asset::Metadata;
 use std::fs::File;
 use std::io::{BufReader, Read};
 use std::path::{Path, PathBuf};
@@ -52,20 +51,16 @@ impl AssetIo for JarAssetIo {
         unimplemented!()
     }
 
-    fn watch_path_for_changes(
-        &self,
-        _path: &Path,
-        _exclude: Option<PathBuf>,
-    ) -> Result<(), AssetIoError> {
-        // implementación de watch_path_for_changes
+    fn is_directory(&self, _path: &Path) -> bool {
+        unimplemented!()
+    }
+
+    fn watch_path_for_changes(&self, _path: &Path) -> Result<(), AssetIoError> {
+        // file watching not implemented
         Ok(())
     }
 
     fn watch_for_changes(&self) -> Result<(), AssetIoError> {
         unimplemented!()
-    }
-
-    fn get_metadata(&self, _: &Path) -> Result<Metadata, AssetIoError> {
-        todo!()
     }
 }

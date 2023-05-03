@@ -1,4 +1,4 @@
-use bevy_ui::UiRect;
+use bevy::sprite::Rect;
 use byte::ctx::Endian;
 use byte::{BytesExt, TryRead};
 use glam::Vec2;
@@ -8,11 +8,11 @@ use itertools::Itertools;
 pub struct Frames {
     pub total_time: u32,
     pub frame_times: Vec<u16>,
-    pub frame_rects: Vec<UiRect>,
+    pub frame_rects: Vec<Rect>,
 }
 
 impl Frames {
-    pub fn new(total_time: u32, frame_durations: &[u16], frame_coords: Vec<UiRect>) -> Self {
+    pub fn new(total_time: u32, frame_durations: &[u16], frame_coords: Vec<Rect>) -> Self {
         let mut frame_times = Vec::with_capacity(frame_durations.len());
         let mut frame_time = 0;
         for dur in frame_durations {
