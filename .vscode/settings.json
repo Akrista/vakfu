@@ -1,16 +1,11 @@
 {
-  "eslint.validate": ["sql", "markdown", "json", "python", "ipynb"],
+  "eslint.validate": ["markdown", "json", "toml", "rs"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
   "editor.stickyScroll.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.guides.bracketPairs": true,
-  "[sql]": {
-    "editor.defaultFormatter": "mtxr.sqltools",
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
-  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -21,17 +16,9 @@
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file"
   },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnType": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
-  },
-  "notebook.lineNumbers": "on",
-  "mssql.enableQueryHistoryCapture": false
+  "rust-analyzer.linkedProjects": [
+    ".\\Cargo.toml",
+    ".\\Cargo.toml",
+    ".\\Cargo.toml"
+  ]
 }
